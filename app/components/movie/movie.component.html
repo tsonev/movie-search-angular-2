@@ -1,0 +1,93 @@
+<md-card class="details-card" [style.background-image]="'url('+((movie.Poster && movie.Poster !=='N/A')?movie.Poster:'/assets/img/NA.jpg')+')'">
+	<div class="details-spinner" *ngIf="loading">
+		<md-spinner></md-spinner>
+	</div>
+	<div *ngIf="!loading">
+		<div>
+			<h2>
+				{{movie.Title}} ({{movie.Year}})
+				<span>
+				<small class="details-votes">
+					<ac-stars [rating]="movie.imdbRating" [from]="10"></ac-stars>
+					{{movie.imdbRating}}/10 of {{movie.imdbVotes}} votes
+				</small>
+            </span>
+			</h2>
+
+		</div>
+		<div class="details-poster">
+			<div *ngIf="movie.Poster !=='N/A'">
+				<img [src]="movie.Poster" [alt]="movie.Title" class="details-poster">
+			</div>
+			<div *ngIf="movie.Poster ==='N/A'">
+				<img src="/assets/img/NA.jpg" [alt]="movie.Title" class="details-poster">
+			</div>
+		</div>
+		<div>
+
+
+			<dl class="details-items">
+				<dt>
+					Type:
+				</dt>
+				<dd>
+					{{movie.Type}}
+				</dd>
+				<dt>
+					Released:
+				</dt>
+				<dd>
+					{{movie.Released}}
+				</dd>
+				<dt>
+					Duration:
+				</dt>
+				<dd>
+					{{movie.Runtime}}
+				</dd>
+				<dt>
+					Genre:
+				</dt>
+				<dd>
+					{{movie.Genre}}
+				</dd>
+				<dt>
+					Director:
+				</dt>
+				<dd>
+					{{movie.Director}}
+				</dd>
+				<dt>
+					Actors:
+				</dt>
+				<dd>
+					{{movie.Actors}}
+				</dd>
+				<dt>
+					Language:
+				</dt>
+				<dd> {{movie.Language}}
+				</dd>
+				<dt>
+					Country:
+				</dt>
+				<dd>
+					{{movie.Country}}
+				</dd>
+				<dt>
+					Plot:
+				</dt>
+				<dd>
+					{{movie.Plot}}
+				</dd>
+				<dt>
+					Awards:
+				</dt>
+				<dd>
+					{{movie.Awards}}
+				</dd>
+			</dl>
+
+		</div>
+	</div>
+</md-card>

@@ -1,0 +1,107 @@
+html, body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	/*position: fixed;*/
+	/*top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;*/
+}
+
+md-card {
+	background-color: #f7f7f7;
+	padding: 0 0px 15px 0px !important;
+}
+
+
+.app-content {
+	width: 100%;
+	
+}
+.poster {
+	width: 184px;
+	background-image: url('/assets/img/NA.jpg');
+}
+.films-grid {
+	display: inline;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.films-grid-item {
+	display: inline-block;
+	width: 200px;
+	min-height: 400px;
+	vertical-align: top;
+	text-align: center;
+}
+.films-grid-item md-card {
+
+	cursor: pointer;
+}
+.films-container {
+	max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+.example-fill-remaining-space {
+  
+  flex: 1 1 auto;
+}
+.details-card {
+	max-width: 640px;
+	margin: 5px auto 0 auto;
+	padding: 25px !important;
+	    
+    background-position: 0 0;
+    background-blend-mode: overlay;
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.details-poster {
+	text-align: center;
+}
+.details-items .md-list-item{
+	display: table;
+}
+.details-items dt{
+	font-weight: bold;
+}
+.details-spinner {
+    padding: 30px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100px;
+}
+.details-votes {
+	font-size: 50%;
+}
+.search-box {
+	height: 60px;
+	font-size: 75%;
+}
+.md-select-value {
+	top: -1px !important;
+}
+.md-select-panel {
+	background-color: #FFF;
+}
+.md-select-trigger {
+	min-width: 80px !important;
+}
+.md-input-placeholder {
+	color: #fff;
+}
+.search-title {
+	width: 110px;
+}
+.search-year {
+	width: 40px;
+}
+.search-type {
+	width: 80px;
+}

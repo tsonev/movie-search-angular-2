@@ -1,0 +1,17 @@
+<div class="films-container search-results" infinite-scroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
+    <div *ngIf="totalResults===0">
+        <h2>
+            {{error}}
+        </h2>
+        <h4>
+            Please refine your search!
+        </h4>
+    </div>
+    <ul class="films-grid" *ngIf="totalResults>0">
+        <li class="films-grid-item" mvdb-movie-short [movie]="movie" *ngFor="let movie of movies" (click)="viewDetails(movie)">
+        </li>
+    </ul>
+    <div *ngIf="hasMore()">
+        <button md-raised-button (click)="onScroll()">Show More</button>
+    </div>
+</div>

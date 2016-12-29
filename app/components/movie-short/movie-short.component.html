@@ -1,0 +1,20 @@
+<md-card>
+    <div *ngIf="movie.Poster !=='N/A'">
+        <img [src]="movie.Poster" [alt]="movie.Title" class="poster">
+    </div>
+    <div *ngIf="movie.Poster ==='N/A'">
+        <img src="/assets/img/NA.jpg" [alt]="movie.Title" class="poster">
+    </div>
+    <h4 md-line>
+        {{movie.Title}}
+    </h4>
+    <p md-line>
+        <span>
+            {{movie.Year}}
+        </span>
+        <span>
+            {{movie.Type}}
+        </span>
+
+    </p>
+</md-card>
