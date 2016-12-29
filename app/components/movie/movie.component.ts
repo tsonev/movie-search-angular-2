@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -6,6 +6,7 @@ import { Movie } from '../../models/movie';
 import { QueryByTitle } from '../../models/query';
 
 import { MovieService } from '../../services/movie.service';
+import { TitleService } from '../../services/title.service';
 
 @Component({
 	selector: 'movie-details',
@@ -14,6 +15,7 @@ import { MovieService } from '../../services/movie.service';
 })
 export class MovieComponent {
 
+	title: string;
 	loading: boolean = true;
 	movie: Movie = {};
 	query: QueryByTitle = {
@@ -26,6 +28,7 @@ export class MovieComponent {
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
+		private titleService: TitleService,
 		private movieService: MovieService) {
 	}
 
@@ -38,6 +41,7 @@ export class MovieComponent {
 			})
 			.subscribe((movie: Movie) => {
 				this.loading = false;
+				this.titleService.setTitle(movie.Title);
 				return this.movie = movie;
 			});
 	}

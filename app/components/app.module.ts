@@ -13,6 +13,7 @@ import { MovieModule } from './movie/movie.module';
 import { MovieListModule } from './movie-list/movie-list.module';
 
 import { QueryService } from '../services/query.service';
+import { TitleService } from '../services/title.service';
 
 @NgModule({
 	imports: [
@@ -26,7 +27,7 @@ import { QueryService } from '../services/query.service';
 		routing
 	],
 	providers: [
-		QueryService
+		QueryService, TitleService
 	],
 	declarations: [AppComponent, MovieSearchComponent],
 	bootstrap: [AppComponent],

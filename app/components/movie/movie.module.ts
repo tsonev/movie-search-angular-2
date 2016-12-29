@@ -5,8 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 
 import { MovieComponent } from './movie.component';
-import { AcStars } from '../ac-rating/stars';
-import { AcStar } from '../ac-rating/star';
+import { RatingModule } from '../rating/rating.module';
 import { routing } from './movie.routing';
 
 @NgModule({
@@ -15,11 +14,10 @@ import { routing } from './movie.routing';
 		HttpModule,
 		FormsModule,
 		MaterialModule.forRoot(),
+		RatingModule,
 		routing
 	],
 	declarations: [
-		AcStars,
-		AcStar,
 		MovieComponent,
 	],
 	bootstrap: [

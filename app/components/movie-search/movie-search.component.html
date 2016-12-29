@@ -1,26 +1,35 @@
 <md-toolbar color="primary">
-    <span class="hide-xs">Movie search</span>
+	<button md-icon-button *ngIf="title ==='Movie Search'">
+        <md-icon class="" aria-label="{{title}}">local_movies</md-icon>
+    </button>
+	<button md-icon-button *ngIf="title !=='Movie Search'" (click)="backClicked()">
+        <md-icon class="" aria-label="Back">keyboard_arrow_left</md-icon>
+    </button>
+	<span class="hide-xs search-header">
+		
+		{{title}}
+	</span>
 
-    <span class="example-fill-remaining-space"></span>
-    <div class="search-box">
+	<span class="example-fill-remaining-space"></span>
+	<div class="search-box">
 
-        <form [formGroup]="form">
+		<form [formGroup]="form">
 
-            <md-input class="search-title" placeholder="Title" name="search" required minlength="2" formControlName="s">
-            </md-input>
-            <md-input class="search-year" placeholder="year" name="year" formControlName="y">
-            </md-input>
-            <md-select class="search-type" formControlName="type" placeholder="type">
-                <md-option value=""> All </md-option>
-                <md-option value="movie"> Movie </md-option>
-                <md-option value="series"> Series </md-option>
-                <md-option value="episode"> Episode </md-option>
-                <md-option value="game"> Game </md-option>
-            </md-select>
+			<md-input class="search-title" placeholder="Title" name="search" required minlength="2" formControlName="s">
+			</md-input>
+			<md-input class="search-year" placeholder="year" name="year" formControlName="y">
+			</md-input>
+			<md-select class="search-type" formControlName="type" placeholder="type">
+				<md-option value=""> All </md-option>
+				<md-option value="movie"> Movie </md-option>
+				<md-option value="series"> Series </md-option>
+				<md-option value="episode"> Episode </md-option>
+				<md-option value="game"> Game </md-option>
+			</md-select>
 
-        </form>
-    </div>
-    <button md-icon-button (click)="doSearch()">
+		</form>
+	</div>
+	<button md-icon-button (click)="doSearch()">
         <md-icon class="" aria-label="Search">search</md-icon>
     </button>
 

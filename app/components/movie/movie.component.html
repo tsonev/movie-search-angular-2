@@ -2,30 +2,26 @@
 	<div class="details-spinner" *ngIf="loading">
 		<md-spinner></md-spinner>
 	</div>
-	<div *ngIf="!loading">
-		<div>
+	<div *ngIf="!loading" class="details">
+		<div class="details-title">
 			<h2>
 				{{movie.Title}} ({{movie.Year}})
-				<span>
-				<small class="details-votes">
-					<ac-stars [rating]="movie.imdbRating" [from]="10"></ac-stars>
-					{{movie.imdbRating}}/10 of {{movie.imdbVotes}} votes
-				</small>
-            </span>
 			</h2>
-
 		</div>
-		<div class="details-poster">
-			<div *ngIf="movie.Poster !=='N/A'">
-				<img [src]="movie.Poster" [alt]="movie.Title" class="details-poster">
-			</div>
-			<div *ngIf="movie.Poster ==='N/A'">
-				<img src="/assets/img/NA.jpg" [alt]="movie.Title" class="details-poster">
-			</div>
-		</div>
-		<div>
 
 
+		<div class="details-description">
+			<div class="details-poster">
+				<div *ngIf="movie.Poster !=='N/A'">
+					<img [src]="movie.Poster" [alt]="movie.Title" class="details-poster-img">
+				</div>
+				<div *ngIf="movie.Poster ==='N/A'">
+					<img src="/assets/img/NA.jpg" [alt]="movie.Title" class="details-poster-img">
+				</div>
+			</div>
+			<div class="details-rating-container">
+				<movie-rating [rating]="movie.imdbRating" [from]="10" [votes]="movie.imdbVotes"></movie-rating>
+			</div>
 			<dl class="details-items">
 				<dt>
 					Type:
@@ -75,12 +71,6 @@
 					{{movie.Country}}
 				</dd>
 				<dt>
-					Plot:
-				</dt>
-				<dd>
-					{{movie.Plot}}
-				</dd>
-				<dt>
 					Awards:
 				</dt>
 				<dd>
@@ -88,6 +78,14 @@
 				</dd>
 			</dl>
 
+		</div>
+		<div class="details-items">
+			<dt>
+				Plot:
+			</dt>
+			<dd>
+				{{movie.Plot}}
+			</dd>
 		</div>
 	</div>
 </md-card>

@@ -1,14 +1,16 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 import { Query } from '../../models/query';
 
 import { QueryService } from '../../services/query.service';
+import { TitleService } from '../../services/title.service';
 
 @Component({
 	selector: 'mvdb-movie-search',
@@ -16,6 +18,7 @@ import { QueryService } from '../../services/query.service';
 	providers: [FormBuilder]
 })
 export class MovieSearchComponent implements OnInit, OnDestroy {
+	title: string = 'Movie Search';
 	query: Query = {
 		s: '',
 		y: '',
@@ -27,7 +30,9 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
+		private _location: Location,
 		private queryService: QueryService,
+		private titleService: TitleService,
 		private formBuilder: FormBuilder) {
 
 	}
@@ -50,8 +55,18 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/movie-list', this.query]);
 	}
 
+	backClicked() {
+		this._location.back();
+	}
+
 	ngOnInit() {
 		this.form = this.formBuilder.group(this.query);
+
+		this.subscription.title = this.titleService.title
+			.subscribe(title => {
+				this.title = title;
+			});
+
 		this.subscription.query = this.queryService.query
 			.subscribe(query => {
 				this.query = query;

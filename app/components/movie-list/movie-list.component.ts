@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 
 import { MovieService } from '../../services/movie.service';
 import { QueryService } from '../../services/query.service';
+import { TitleService } from '../../services/title.service';
+
 
 import { Query } from '../../models/query';
 import { Movie } from '../../models/movie';
@@ -17,7 +19,7 @@ import { Movie } from '../../models/movie';
 })
 export class MovieListComponent implements OnInit {
 
-	pageTitle: string;
+	title: string = 'Movie Search';
 	totalResults: number;
 	resultsPerPage: number = 10;
 	error: string;
@@ -37,6 +39,7 @@ export class MovieListComponent implements OnInit {
 		private router: Router,
 		private movieService: MovieService,
 		private queryService: QueryService,
+		private titleService: TitleService,
 		private formBuilder: FormBuilder) {
 
 	}
@@ -93,6 +96,7 @@ export class MovieListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.titleService.setTitle('Movie Search');
 		this.route.params
 			.switchMap((params: Params) => {
 				this.query.s = params['s'] || '';
