@@ -7,7 +7,6 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import 'rxjs/add/operator/map'
 
 import { Query } from '../../models/query';
-import { Movie } from '../../models/movie';
 
 import { QueryService } from '../../services/query.service';
 
@@ -64,7 +63,7 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
 					this.query = data;
 					this.delayedSearch(() => {
 						this.doSearch();
-					})
+					});
 
 				});
 			});

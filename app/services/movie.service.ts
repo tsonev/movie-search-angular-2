@@ -11,51 +11,51 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MovieService {
-    private apiUrl = 'http://www.omdbapi.com/?';
+	private apiUrl = 'http://www.omdbapi.com/?';
 
-    movies: Movie[] = [];
+	movies: Movie[] = [];
 
-    constructor(public http: Http) {
-    }
+	constructor(public http: Http) {
+	}
 
-    getAll(): Observable<any[]> {
-        return this.http.get(this.apiUrl, new RequestOptions({
-            headers: new Headers({ 'Content-Type': 'application/json' }
-            )
-        }))
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    }
+	getAll(): Observable<any[]> {
+		return this.http.get(this.apiUrl, new RequestOptions({
+			headers: new Headers({ 'Content-Type': 'application/json' }
+			)
+		}))
+			.map((res: Response) => res.json())
+			.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+	}
 
-    search(query: any): Observable<any[]> {
+	search(query: any): Observable<any[]> {
 
-        let params = new URLSearchParams();
-        for (let prop in query) {
-            if (query.hasOwnProperty(prop)) {
-                params.set(prop, query[prop]);
-            }
-        }
+		let params = new URLSearchParams();
+		for (let prop in query) {
+			if (query.hasOwnProperty(prop)) {
+				params.set(prop, query[prop]);
+			}
+		}
 
-        return this.http.get(this.apiUrl, {
-            search: params
-        })
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    }
+		return this.http.get(this.apiUrl, {
+			search: params
+		})
+			.map((res: Response) => res.json())
+			.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+	}
 
-    getMovieByTitle(query: any): Observable<any[]> {
+	getMovieByTitle(query: any): Observable<any[]> {
 
-        let params = new URLSearchParams();
-        for (let prop in query) {
-            if (query.hasOwnProperty(prop)) {
-                params.set(prop, query[prop]);
-            }
-        }
+		let params = new URLSearchParams();
+		for (let prop in query) {
+			if (query.hasOwnProperty(prop)) {
+				params.set(prop, query[prop]);
+			}
+		}
 
-        return this.http.get(this.apiUrl, {
-            search: params
-        })
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    }
+		return this.http.get(this.apiUrl, {
+			search: params
+		})
+			.map((res: Response) => res.json())
+			.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+	}
 }

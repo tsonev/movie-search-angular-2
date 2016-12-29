@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
 	totalResults: number;
 	resultsPerPage: number = 10;
 	error: string;
-	movies: any[] = [];
+	movies: Movie[] = [];
 	sort: string = 'Title';
 	order: string = 'asc';
 	query: Query = {

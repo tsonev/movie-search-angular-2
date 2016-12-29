@@ -15,7 +15,7 @@ import { MovieService } from '../../services/movie.service';
 export class MovieComponent {
 
 	loading: boolean = true;
-	movie: any = {};
+	movie: Movie = {};
 	query: QueryByTitle = {
 		i: '',
 		t: '',
@@ -36,11 +36,10 @@ export class MovieComponent {
 				this.query.i = params['id'];
 				return this.movieService.getMovieByTitle(this.query)
 			})
-			.subscribe((movie: any) => {
+			.subscribe((movie: Movie) => {
 				this.loading = false;
 				return this.movie = movie;
 			});
 	}
-
 
 }
